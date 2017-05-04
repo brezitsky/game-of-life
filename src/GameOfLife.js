@@ -268,22 +268,26 @@ class GameOfLife {
 			// console.log(this.nextGeneration);
 			// console.log(this.generationsHistory.length);
 
-			for(let k = 0; k < this.generationsHistory.length; k++) {
+			for(let k = 1; k < this.generationsHistory.length; k++) {
 				// console.log(k);
-				let flag = true;
+				let flag = 0;
 
 				for(let i = 0; i < this.dimensionX; i++) {
 					for(let j = 0; j < this.dimensionY; j++) {
-						// console.log(this.generationsHistory[k][i][j] != this.nextGeneration[i][j]);
+						// console.log(this.generationsHistory[k][i][j] !== this.nextGeneration[i][j]);
 						if(this.generationsHistory[k][i][j] !== this.nextGeneration[i][j]) {
-							flag = false;
 							// console.log(flag);
 							// console.log(k, i, j);
+							flag++;
+							break;
 						}
 					}
 				}
 
-				if(!flag) {
+				// console.log('-----------');
+
+				if(flag === 0) {
+					// console.log(`tick: ${k}`);
 					suggestions.push({
 						tick: k
 					})
@@ -292,12 +296,6 @@ class GameOfLife {
 
 			return suggestions;
 		}
-
-		// console.log({
-		// 	allDead: allDead(),
-		// 	sameGenerations: sameGenerations(),
-		// 	periodical: periodical()
-		// });
 
 		return {
 			allDead: allDead(),

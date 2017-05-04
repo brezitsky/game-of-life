@@ -61,9 +61,9 @@
 const GameOfLife = require('./GameOfLife.js');
 
 const gol = new GameOfLife({
-	x: 20,
-	y: 20,
-	size: 22
+	x: 200,
+	y: 200,
+	size: 10
 });
 
 let interval = null;
@@ -73,10 +73,10 @@ exports.default = {
 
 	data () {
 		return {
-			dimensionX: 20,
-			dimensionY: 20,
-			cellSize: 30,
-			speed: 50,
+			dimensionX: 200,
+			dimensionY: 200,
+			cellSize: 10,
+			speed: 100,
 			tick: 0,
 			navigation: {
 				start: true,
@@ -128,7 +128,7 @@ exports.default = {
 			this.userCanClick = true;
 			this.gameover.allDead = false;
 			this.gameover.sameGenerations = false;
-			this.gameover.periodical = false;
+			this.gameover.periodical = [];
 
 			gol.generateSimpleGrid();
 			gol.drawGrid();
@@ -158,7 +158,7 @@ exports.default = {
 			this.userCanClick = false;
 			this.gameover.allDead = false;
 			this.gameover.sameGenerations = false;
-			this.gameover.periodical = false;
+			this.gameover.periodical = [];
 		},
 
 		pause() {
@@ -171,7 +171,7 @@ exports.default = {
 			this.userCanClick = false;
 			this.gameover.allDead = false;
 			this.gameover.sameGenerations = false;
-			this.gameover.periodical = false;
+			this.gameover.periodical = [];
 		},
 
 		stop() {
@@ -223,7 +223,7 @@ exports.default = {
 			this.navigation.random = false;
 			this.navigation.userInput = false;
 			this.userCanClick = false;
-			console.log(this.gameover.periodical);
+			// console.log(this.gameover.periodical);
 		}
 	},
 
